@@ -1,5 +1,5 @@
 package com.bcopstein;
-
+// ESSE AQUI PODE SER DELETADO!!
 public class Produto {
   private int codigo;
   private String descricao;
