@@ -6,7 +6,7 @@ import com.bcopstein.Negocio.entidades.Produto;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface IProdutoCRUD extends CrudRepository<Produto, int> {
+public interface IVendaCRUD extends CrudRepository<Venda,long> {
     List<Produto> findAll();
-    List<Produto> findByCodigo(int code);
+    List<Produto> findByNumero(long numero);
 }

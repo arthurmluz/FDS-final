@@ -2,9 +2,13 @@ package com.bcopstein.Negocio.entidades;
 import java.util.Date;
 
 import com.bcopstein.Negocio.entidades.Produto;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Venda{
-
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long numero;
     private Date data;
 
@@ -13,23 +17,21 @@ public class Venda{
         this.numero = numero;
     }
 
-    public long getNumero(){
-        return numero;
+    protected Venda(){}
+
+    public long getNumero() {
+        return this.numero;
     }
 
-    public Date getData(){
-        return data;
+    public void setNumero(long numero) {
+        this.numero = numero;
     }
 
+    public Date getData() {
+        return this.data;
+    }
 
-    // não sei bem fazer esse método
-    public int Subtotal(Produto prod){
-        Integer subtotal = 0;
-        Integer imposto = 0;
-
-        subtotal =  prod.getPreco() * prod.getQtdade();
-        subtotal = subtotal * imposto; // criar classes para imposto, sao 3 diferentes (país 1 = 12% de imposto / país 2 = 15% de imposto para compras de até 8000$ e 20% para os valores que excedem essa faixa) 
-        // subtotal = subtotal * impostos()
-        return subtotal;
+    public void setData(Date data) {
+        this.data = data;
     }
 }

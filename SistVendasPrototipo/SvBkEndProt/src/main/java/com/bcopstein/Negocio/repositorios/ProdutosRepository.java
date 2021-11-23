@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.bcopstein.Negocio.entidades.Produto;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 public interface ProdutosRepository{
     // precisamos ler o universo de discurso pra saber oq mais fazer

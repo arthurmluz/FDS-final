@@ -1,13 +1,21 @@
 package com.bcopstein.Negocio.entidades;
 
-public class ItemEstoque{
-    private int quantidadeDisponivel;
-    private Produto produto;
+import javax.persistence.Entity;
+import javaax.persistence.Id;
 
-    public ItemEstoque(int qtdDisponivel, Produto prod){
+@Entity
+public class ItemEstoque{
+    @Id
+    private int id;
+    private int quantidadeDisponivel;
+    private int codProduto;
+
+    public ItemEstoque(int qtdDisponivel, int codProduto){
         this.quantidadeDisponivel = qtdDisponivel;
-        this.produto = prod;
+        this.codProduto = codProduto;
     }
+
+    protected ItemEstoque(){}
 
     public int getQuantidadeDisponivel(){
         return quantidadeDisponivel;
@@ -17,6 +25,23 @@ public class ItemEstoque{
         return produto;
     }
 
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setQuantidadeDisponivel(int quantidadeDisponivel){
+        this.quantidadeDisponivel = quantidadeDisponivel;
+    }
+
+    public void setCodProduto(int codProduto){
+        this.codProduto = codProduto;
+    }
+
+    // nao sei se seria necessario
     public boolean diminuiProduto(){
         if( quantidadeDisponivel >= 1){
             quantidadeDisponivel -=1;
