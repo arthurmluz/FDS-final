@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public interface VendaRepository{
     // precisamos ler o universo de discurso pra saber oq mais fazer
     List<Venda> todos();
-    boolean cadastra(Venda venda);
+    Venda recupera(int numero);
+    void cadastra(Venda venda);
     void removeTodos();
 }

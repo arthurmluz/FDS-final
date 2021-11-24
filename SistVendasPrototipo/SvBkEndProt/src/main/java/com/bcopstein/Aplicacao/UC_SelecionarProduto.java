@@ -8,15 +8,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UC_SelecionarProduto {
-    private ServicoDeProduto ServicoDeProduto;
+    private ServicoDeEstoque ServicoDeEstoque;
 
     @Autowired
-    public SelecionarProduto(ServicoDeProduto ServicoDeProduto) {
-        this.ServicoDeProduto = ServicoDeProduto;
+    public SelecionarProduto(ServicoDeEstoque ServicoDeEstoque) {
+        this.ServicoDeEstoque = ServicoDeEstoque;
     }
     
-    public void run(Produto produto){
-        ServicoDeProduto.cadastraProduto(produto);
+    public boolean run(int codigo, int quantidade){
+        ItemEstoque item = ServicoDeEstoque.findByCodigo(codigo);
+        if( item.getQuantidadeDisponivel() < quantidade )
+            return true;
+        return false;
     }
-    
 }

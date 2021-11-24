@@ -12,4 +12,5 @@ public interface EstoqueRepository{
     List<Produto> todos();
     boolean cadastra(Produto produto);
     void removeTodos();
+    ItemEstoque procura(int id);
 }

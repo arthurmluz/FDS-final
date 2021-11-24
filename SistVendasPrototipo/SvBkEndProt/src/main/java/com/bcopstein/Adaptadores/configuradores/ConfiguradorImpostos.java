@@ -1,6 +1,5 @@
 package com.bcopstein.Adaptadores.configuradores;
 
-
 import com.bcopstein.Negocio.repositorios.VendaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +13,15 @@ public class ConfiguradorImpostos{
     //Talvez seja alguma outra coisa aqui
     private algumainterfacerepositorio rep;
 
-    public ConfiguradorImpostos(){
-        
+    @Autowired
+    public ConfiguradorImpostos(algumainterfacerepositorio rep){
+        this.rep = rep;
     }
 
     @Bean
     @ConditionalOnProperty(name = "calculo.imposto", havingValue = "Brasil", matchIfMissing = true)
     public retornaAlgumaInterface impostoBrasil(){
-
+        return new CalculoImpostoBrasil(rep);
     }
 
     @Bean
@@ -31,28 +31,24 @@ public class ConfiguradorImpostos{
     }
 }
 
-
-
-
-
-@Configuration
-public class ConfiguradorCalculoEstatistica {
-    private IEventoRepository eventoRep;
-
-    @Autowired
-    public ConfiguradorCalculoEstatistica(IEventoRepository eventoRep) {
-        this.eventoRep = eventoRep;
-    }
-
-    @Bean
-    @ConditionalOnProperty(name = "calculo.estatistica", havingValue = "original", matchIfMissing = true)
-    public ICalculoEstatistica opcaoRegraClassica() {
-        return new EstatisticaNormal(eventoRep);
-    }
-
-    @Bean
-    @ConditionalOnProperty(name = "calculo.estatistica", havingValue = "desconsidera")
-    public ICalculoEstatistica opcaoDesconsidera() {
-        return new EstatisticaDesconsidera(eventoRep);
-    }
-}
+// @Configuration
+// public class ConfiguradorCalculoEstatistica {
+//     private IEventoRepository eventoRep;
+// 
+//     @Autowired
+//     public ConfiguradorCalculoEstatistica(IEventoRepository eventoRep) {
+//         this.eventoRep = eventoRep;
+//     }
+// 
+//     @Bean
+//     @ConditionalOnProperty(name = "calculo.estatistica", havingValue = "original", matchIfMissing = true)
+//     public ICalculoEstatistica opcaoRegraClassica() {
+//         return new EstatisticaNormal(eventoRep);
+//     }
+// 
+//     @Bean
+//     @ConditionalOnProperty(name = "calculo.estatistica", havingValue = "desconsidera")
+//     public ICalculoEstatistica opcaoDesconsidera() {
+//         return new EstatisticaDesconsidera(eventoRep);
+//     }
+// }

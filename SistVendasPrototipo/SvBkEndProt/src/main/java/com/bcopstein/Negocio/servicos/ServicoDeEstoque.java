@@ -21,8 +21,7 @@ public class ServicoDeEstoque {
         return estoqueRep.todos();
     }
 
-    public void cadastraProduto(Estoque estoque){
-        estoqueRep.removeTodos();
-        estoqueRep.cadastra(estoque);
+    public void cadastraEstoque(ItemEstoque item){
+        estoqueRep.cadastra(item);
     }   
 }

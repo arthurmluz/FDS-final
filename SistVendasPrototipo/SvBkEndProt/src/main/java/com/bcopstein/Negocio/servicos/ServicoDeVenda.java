@@ -21,6 +21,10 @@ public class ServicoDeVenda {
         return vendaRep.todos();
     }
 
+    public Venda recupera(int numero){
+        return vendaRep.recupera(numero);
+    }
+
     public void cadastraVenda(Venda venda){
         vendaRep.cadastra(venda);
     }   
