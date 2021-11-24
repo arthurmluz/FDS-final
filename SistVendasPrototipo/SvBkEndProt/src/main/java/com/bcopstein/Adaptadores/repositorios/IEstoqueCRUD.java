@@ -6,7 +6,7 @@ import com.bcopstein.Negocio.entidades.ItemEstoque;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface IEstoqueCRUD extends CrudRepository<ItemEstoque, int> {
+public interface IEstoqueCRUD extends CrudRepository<ItemEstoque, Integer> {
     List<ItemEstoque> findAll();
     ItemEstoque findById(int id);
 }

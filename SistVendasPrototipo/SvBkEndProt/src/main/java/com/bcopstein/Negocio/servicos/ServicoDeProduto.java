@@ -3,17 +3,17 @@ package com.bcopstein.Negocio.servicos;
 import java.util.List;
 
 import com.bcopstein.Negocio.entidades.Produto;
-import com.bcopstein.Negocio.repositorios.ProdutoRepository;
+import com.bcopstein.Negocio.repositorios.ProdutosRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ServicoDeProduto {
-    public ProdutoRepository produtoRep;
+    public ProdutosRepository produtoRep;
 
     @Autowired
-    public ServicoDeProduto(ProdutoRepository produtoRep){
+    public ServicoDeProduto(ProdutosRepository produtoRep){
         this.produtoRep = produtoRep;
     }
 

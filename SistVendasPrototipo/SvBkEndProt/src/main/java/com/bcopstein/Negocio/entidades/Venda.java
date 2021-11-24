@@ -1,8 +1,9 @@
 package com.bcopstein.Negocio.entidades;
 import java.util.Date;
 
-import com.bcopstein.Negocio.entidades.Produto;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity

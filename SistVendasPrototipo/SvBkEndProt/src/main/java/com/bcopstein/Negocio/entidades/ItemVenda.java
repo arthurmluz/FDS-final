@@ -1,4 +1,4 @@
-package com.bcopstein.Negocio;
+package com.bcopstein.Negocio.entidades;
 
 public class ItemVenda {
     private int quantidade;

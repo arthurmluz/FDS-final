@@ -1,4 +1,4 @@
-package com.bcopstein.Adaptadores.Aplicacao;
+package com.bcopstein.Aplicacao;
 
 import com.bcopstein.Negocio.entidades.Venda;
 import com.bcopstein.Negocio.servicos.ServicoDeVenda;
@@ -11,7 +11,7 @@ public class UC_EfetivarVenda {
     private ServicoDeVenda ServicoDeVenda;
 
     @Autowired
-    public EfetivarVenda(ServicoDeVenda ServicoDeVenda) {
+    public void EfetivarVenda(ServicoDeVenda ServicoDeVenda) {
         this.ServicoDeVenda = ServicoDeVenda;
     }
     

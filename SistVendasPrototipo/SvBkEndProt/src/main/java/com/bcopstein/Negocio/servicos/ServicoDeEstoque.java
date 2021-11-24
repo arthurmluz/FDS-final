@@ -17,11 +17,15 @@ public class ServicoDeEstoque {
         this.estoqueRep = estoqueRep;
     }
 
-    public List<Estoque> todos(){
+    public List<ItemEstoque> todos(){
         return estoqueRep.todos();
     }
 
     public void cadastraEstoque(ItemEstoque item){
         estoqueRep.cadastra(item);
     }   
+
+    public ItemEstoque procura(int id){
+        return estoqueRep.procura(id);
+    }
 }

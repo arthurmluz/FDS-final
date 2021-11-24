@@ -3,6 +3,8 @@ package com.bcopstein.Adaptadores.repositorios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 import com.bcopstein.Negocio.entidades.Venda;
 import com.bcopstein.Negocio.repositorios.VendaRepository;
 
@@ -17,15 +19,22 @@ public class VendaRepImpl implements VendaRepository {
 
 
     public List<Venda> todos(){
-        List<Venda> resp = IVendaCRUD.findAll();
+        List<Venda> resp = vendaCRUD.findAll();
         return resp;
     }
 
     public Venda recupera(int numero){
-        return IVendaCRUD.findByNumero(venda.getId());
+        return vendaCRUD.findByNumero(numero);
     }
 
     public void cadastra(Venda venda){
-        IVendaCRUD.save(venda);
+        vendaCRUD.save(venda);
+    }
+
+
+    @Override
+    public void removeTodos() {
+        // TODO Auto-generated method stub
+        
     }
 }

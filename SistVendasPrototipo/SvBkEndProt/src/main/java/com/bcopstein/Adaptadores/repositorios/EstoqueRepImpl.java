@@ -3,6 +3,8 @@ package com.bcopstein.Adaptadores.repositorios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 import com.bcopstein.Negocio.entidades.ItemEstoque;
 import com.bcopstein.Negocio.repositorios.EstoqueRepository;
 
@@ -17,11 +19,25 @@ public class EstoqueRepImpl implements EstoqueRepository {
 
 
     public List<ItemEstoque> todos(){
-        List<ItemEstoque> resp = IEstoqueCRUD.findAll();
+        List<ItemEstoque> resp = estoqueCRUD.findAll();
         return resp;
     }
 
-    public ItemEstoque procura(ItemEstoque item){
-        return IEstoqueCRUD.findById(item.getId());
+    public ItemEstoque procura(int codigo){
+        return estoqueCRUD.findById(codigo);
+    }
+
+
+    @Override
+    public boolean cadastra(ItemEstoque item) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
+    @Override
+    public void removeTodos() {
+        // TODO Auto-generated method stub
+        
     }
 }

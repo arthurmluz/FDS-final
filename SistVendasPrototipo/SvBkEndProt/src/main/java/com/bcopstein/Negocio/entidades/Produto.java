@@ -1,7 +1,7 @@
 package com.bcopstein.Negocio.entidades;
 
 import javax.persistence.Entity;
-import javaax.persistence.Id;
+import javax.persistence.Id;
 
 @Entity
 public class Produto {
@@ -44,7 +44,7 @@ public class Produto {
         this.codigo = codigo;
     }
 
-    public void setDescricao() {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 

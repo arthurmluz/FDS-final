@@ -1,7 +1,7 @@
 package com.bcopstein.Negocio.entidades;
 
 import javax.persistence.Entity;
-import javaax.persistence.Id;
+import javax.persistence.Id;
 
 @Entity
 public class ItemEstoque{
@@ -21,8 +21,8 @@ public class ItemEstoque{
         return quantidadeDisponivel;
     }
 
-    public Produto getProduto(){
-        return produto;
+    public int getCodProduto(){
+        return codProduto;
     }
 
     public int getId(){
