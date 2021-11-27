@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bcopstein.Aplicacao.*;
+import com.bcopstein.Negocio.entidades.ItemVenda;
 import com.bcopstein.Negocio.entidades.Produto;
 
 import com.bcopstein.Negocio.entidades.Venda;
@@ -59,9 +60,9 @@ public class Controller {
 
   @PostMapping("/confirmacao")
   @CrossOrigin(origins = "*")
-  public boolean confirmaVenda() {
-
-    return true;
+  public boolean confirmaVenda(@RequestBody final ItemVenda[] carrinho)
+  {
+      return efetivarVenda.run();
   }
 
   @GetMapping("/historico")

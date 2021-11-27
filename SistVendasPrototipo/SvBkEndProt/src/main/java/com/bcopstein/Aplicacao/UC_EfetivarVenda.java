@@ -1,5 +1,6 @@
 package com.bcopstein.Aplicacao;
 
+import com.bcopstein.Negocio.entidades.ItemVenda;
 import com.bcopstein.Negocio.entidades.Venda;
 import com.bcopstein.Negocio.servicos.ServicoDeVenda;
 
@@ -15,7 +16,7 @@ public class UC_EfetivarVenda {
         this.ServicoDeVenda = ServicoDeVenda;
     }
     
-    public void run(Venda venda){
+    public boolean run(Venda venda){
         ServicoDeVenda.cadastraVenda(venda);
     }
     

@@ -2,13 +2,22 @@ package com.bcopstein.Negocio.entidades;
 
 public class ItemVenda {
     private int quantidade;
+    private int codProduto;
     private int precoUnitVenda;
     private long imposto;
 
-    public ItemVenda(int quantidade, int precoUnitVenda, long imposto){
+    // ver com o pessoal se concordam
+    public ItemVenda(int quantidade, int codProduto){
         this.quantidade = quantidade;
-        this.precoUnitVenda = precoUnitVenda;
-        this.imposto = imposto;
+        this.codProduto = codProduto;
+    }
+
+    public int getCodProduto() {
+        return codProduto;
+    }
+
+    public void setCodProduto(int codProduto) {
+        this.codProduto = codProduto;
     }
 
     public int getQuantidade(){
