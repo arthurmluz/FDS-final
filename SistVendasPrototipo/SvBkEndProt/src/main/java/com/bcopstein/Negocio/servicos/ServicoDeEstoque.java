@@ -25,6 +25,9 @@ public class ServicoDeEstoque {
         return estoqueRep.procura(id);
     }
 
+    public ItemEstoque procuraPorCodProduto(int codProduto){
+        return estoqueRep.procuraPorCodProduto(codProduto);
+    }
     public boolean cadastra(ItemEstoque item ){
         return estoqueRep.cadastra(item);
     }
@@ -33,7 +36,7 @@ public class ServicoDeEstoque {
         return estoqueRep.insereEstoque(id, codProduto, qtd);
    }
 
-    public void remove(int qtd, int codProduto){
-        estoqueRep.removeEstoque(codProduto, qtd);
+    public boolean remove(ItemEstoque item, int quantidade){
+       return estoqueRep.removeEstoque(item, quantidade);
     }
 }

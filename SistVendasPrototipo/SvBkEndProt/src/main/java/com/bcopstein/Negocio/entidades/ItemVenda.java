@@ -1,27 +1,37 @@
 package com.bcopstein.Negocio.entidades;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class ItemVenda {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private int id;
     private int quantidade;
     private int codProduto;
-    private int precoUnitVenda;
+    private double precoUnitVenda;
     private long imposto;
 
-    public ItemVenda(int quantidade, int codProduto){
+    public ItemVenda(int id, int quantidade, int codProduto, double precoUnitVenda){
+        this.id = id;
         this.quantidade = quantidade;
         this.codProduto = codProduto;
+        this.precoUnitVenda = precoUnitVenda;
+    }
+    protected ItemVenda(){}
+
+    public int getId() {
+        return id;
     }
 
-    protected ItemVenda(){}
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPrecoUnitVenda(double precoUnitVenda) {
+        this.precoUnitVenda = precoUnitVenda;
+    }
 
     public int getCodProduto() {
         return codProduto;
@@ -35,7 +45,7 @@ public class ItemVenda {
         return quantidade;
     }
 
-    public int getPrecoUnitVenda(){
+    public double getPrecoUnitVenda(){
         return precoUnitVenda;
     }
 

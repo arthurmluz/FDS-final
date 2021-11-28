@@ -11,5 +11,5 @@ public interface EstoqueRepository{
     ItemEstoque procura(int id);
     ItemEstoque procuraPorCodProduto(int codProd);
     boolean insereEstoque(int id, int codProd, int qtd);
-    void removeEstoque(int codProd, int qtd);
+    boolean removeEstoque(ItemEstoque item, int quantidade);
 }

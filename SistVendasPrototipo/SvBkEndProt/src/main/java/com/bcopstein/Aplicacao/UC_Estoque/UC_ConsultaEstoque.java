@@ -1,4 +1,4 @@
-package com.bcopstein.Aplicacao;
+package com.bcopstein.Aplicacao.UC_Estoque;
 
 import com.bcopstein.Negocio.entidades.ItemEstoque;
 import com.bcopstein.Negocio.servicos.ServicoDeEstoque;

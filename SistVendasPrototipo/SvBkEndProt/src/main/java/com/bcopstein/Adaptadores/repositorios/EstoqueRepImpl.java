@@ -49,13 +49,10 @@ public class EstoqueRepImpl implements EstoqueRepository {
     }
 
     @Override
-    public void removeEstoque(int codProd, int qtd) {
-        ItemEstoque item = procura(codProd);
-        if( item == null )
-            return;
-        if( item.getQuantidadeDisponivel() >= qtd )
-            item.setQuantidadeDisponivel(item.getQuantidadeDisponivel()-qtd);
+    public boolean removeEstoque(ItemEstoque item, int quantidade) {
+        item.setQuantidadeDisponivel(item.getQuantidadeDisponivel()-quantidade);
         estoqueCRUD.save(item);
+        return true;
     }
 
 

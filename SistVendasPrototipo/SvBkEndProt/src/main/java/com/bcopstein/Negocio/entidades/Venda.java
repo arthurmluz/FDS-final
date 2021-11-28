@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Venda{
@@ -15,7 +12,8 @@ public class Venda{
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long numero;
     private Date data;
-    private ArrayList<ItemVenda> produtos;
+    @OneToMany
+    private List<ItemVenda> produtos;
 
     public Venda(Date data, ArrayList<ItemVenda> produtos){
         this.data = data;
@@ -40,4 +38,11 @@ public class Venda{
         this.data = data;
     }
 
+    public List<ItemVenda> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(ArrayList<ItemVenda> produtos) {
+        this.produtos = produtos;
+    }
 }
