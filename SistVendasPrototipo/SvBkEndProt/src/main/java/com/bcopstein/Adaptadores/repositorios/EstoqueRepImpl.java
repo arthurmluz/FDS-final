@@ -27,6 +27,26 @@ public class EstoqueRepImpl implements EstoqueRepository {
         return estoqueCRUD.findById(codigo);
     }
 
+    @Override
+    public void insereEstoque(int codProd, int qtd) {
+        ItemEstoque item = procura(codProd);
+        if( item == null ){
+            item = new ItemEstoque(qtd, codProd);
+            cadastra(item);
+            return;
+        }
+        item.setQuantidadeDisponivel(item.getQuantidadeDisponivel()+qtd);
+    }
+
+    @Override
+    public void removeEstoque(int codProd, int qtd) {
+        ItemEstoque item = procura(codProd);
+        if( item == null )
+            return;
+        if( item.getQuantidadeDisponivel() >= qtd )
+            item.setQuantidadeDisponivel(item.getQuantidadeDisponivel()-qtd);
+    }
+
 
     @Override
     public boolean cadastra(ItemEstoque item) {

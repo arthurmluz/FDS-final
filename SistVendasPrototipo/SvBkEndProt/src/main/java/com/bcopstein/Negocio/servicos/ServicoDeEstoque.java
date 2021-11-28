@@ -29,4 +29,11 @@ public class ServicoDeEstoque {
         estoqueRep.cadastra(item);
     }
 
+   public void insere(int qtd, int codProduto){
+        estoqueRep.insereEstoque(codProduto, qtd);
+   }
+
+    public void remove(int qtd, int codProduto){
+        estoqueRep.removeEstoque(codProduto, qtd);
+    }
 }
