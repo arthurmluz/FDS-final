@@ -10,4 +10,5 @@ public interface ProdutosRepository{
     List<Produto> todos();
     boolean cadastra(Produto produto);
     void removeTodos();
+    Produto procura(int cod);
 }

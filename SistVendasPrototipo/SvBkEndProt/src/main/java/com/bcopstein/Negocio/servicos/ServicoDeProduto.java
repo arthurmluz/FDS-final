@@ -21,7 +21,11 @@ public class ServicoDeProduto {
         return produtoRep.todos();
     }
 
-    public void cadastraProduto(Produto produto){
-        produtoRep.cadastra(produto);
-    }   
+    public boolean cadastraProduto(Produto produto){
+         return produtoRep.cadastra(produto);
+    }
+
+    public Produto procura(int cod){
+        return produtoRep.procura(cod);
+    }
 }

@@ -25,12 +25,12 @@ public class ServicoDeEstoque {
         return estoqueRep.procura(id);
     }
 
-    public void cadastra(ItemEstoque item ){
-        estoqueRep.cadastra(item);
+    public boolean cadastra(ItemEstoque item ){
+        return estoqueRep.cadastra(item);
     }
 
-   public void insere(int qtd, int codProduto){
-        estoqueRep.insereEstoque(codProduto, qtd);
+    public boolean insere(int id, int qtd, int codProduto){
+        return estoqueRep.insereEstoque(id, codProduto, qtd);
    }
 
     public void remove(int qtd, int codProduto){

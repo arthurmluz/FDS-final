@@ -27,8 +27,9 @@ public class VendaRepImpl implements VendaRepository {
         return vendaCRUD.findByNumero(numero);
     }
 
-    public void cadastra(Venda venda){
+    public boolean cadastra(Venda venda){
         vendaCRUD.save(venda);
+        return true;
     }
 
 

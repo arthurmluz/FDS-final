@@ -12,30 +12,40 @@ import com.bcopstein.Negocio.repositorios.EstoqueRepository;
 public class EstoqueRepImpl implements EstoqueRepository {
     private IEstoqueCRUD estoqueCRUD;
 
+
     @Autowired
     public EstoqueRepImpl(IEstoqueCRUD estoqueCRUD){
         this.estoqueCRUD = estoqueCRUD;
     }
 
 
+    @Override
     public List<ItemEstoque> todos(){
-        List<ItemEstoque> resp = estoqueCRUD.findAll();
-        return resp;
+        return estoqueCRUD.findAll();
     }
 
+    @Override
     public ItemEstoque procura(int codigo){
         return estoqueCRUD.findById(codigo);
     }
 
     @Override
-    public void insereEstoque(int codProd, int qtd) {
-        ItemEstoque item = procura(codProd);
+    public ItemEstoque procuraPorCodProduto(int codProd) {
+        return estoqueCRUD.findByCodProduto(codProd);
+    }
+
+    @Override
+    public boolean insereEstoque(int id, int codProd, int qtd) {
+        ItemEstoque item = procuraPorCodProduto(codProd);
+
         if( item == null ){
-            item = new ItemEstoque(qtd, codProd);
+            item = new ItemEstoque(id, qtd, codProd);
             cadastra(item);
-            return;
+            return true;
         }
-        item.setQuantidadeDisponivel(item.getQuantidadeDisponivel()+qtd);
+        item.setQuantidadeDisponivel(item.getQuantidadeDisponivel() + qtd);
+        estoqueCRUD.save(item);
+        return true;
     }
 
     @Override
@@ -45,6 +55,7 @@ public class EstoqueRepImpl implements EstoqueRepository {
             return;
         if( item.getQuantidadeDisponivel() >= qtd )
             item.setQuantidadeDisponivel(item.getQuantidadeDisponivel()-qtd);
+        estoqueCRUD.save(item);
     }
 
 

@@ -8,6 +8,6 @@ public interface VendaRepository{
     // precisamos ler o universo de discurso pra saber oq mais fazer
     List<Venda> todos();
     Venda recupera(int numero);
-    void cadastra(Venda venda);
+    boolean cadastra(Venda venda);
     void removeTodos();
 }

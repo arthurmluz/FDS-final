@@ -9,6 +9,7 @@ public interface EstoqueRepository{
     List<ItemEstoque> todos();
     boolean cadastra(ItemEstoque item);
     ItemEstoque procura(int id);
-    void insereEstoque(int codProd, int qtd);
+    ItemEstoque procuraPorCodProduto(int codProd);
+    boolean insereEstoque(int id, int codProd, int qtd);
     void removeEstoque(int codProd, int qtd);
 }

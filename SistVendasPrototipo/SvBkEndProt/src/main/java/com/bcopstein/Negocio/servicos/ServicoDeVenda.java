@@ -25,8 +25,8 @@ public class ServicoDeVenda {
         return vendaRep.recupera(numero);
     }
 
-    public void cadastraVenda(Venda venda){
-        vendaRep.cadastra(venda);
+    public boolean cadastraVenda(Venda venda){
+         return vendaRep.cadastra(venda);
     }
 
 }

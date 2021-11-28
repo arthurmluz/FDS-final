@@ -34,4 +34,9 @@ public class ProdutosRepImpl implements ProdutosRepository {
         // TODO Auto-generated method stub
         
     }
+
+    @Override
+    public Produto procura(int cod) {
+        return produtoCRUD.findByCodigo(cod);
+    }
 }

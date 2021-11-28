@@ -1,21 +1,18 @@
 package com.bcopstein.Negocio.entidades;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
 @Entity
-
 public class ItemEstoque{
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private int id;
     private int quantidadeDisponivel;
     private int codProduto;
 
-    public ItemEstoque(int quantidade_Disponivel, int codProduto){
+    public ItemEstoque(int id, int quantidade_Disponivel, int codProduto){
+        this.id = id;
         this.quantidadeDisponivel = quantidade_Disponivel;
         this.codProduto = codProduto;
     }
@@ -23,7 +20,7 @@ public class ItemEstoque{
     protected ItemEstoque(){}
 
     public int getQuantidadeDisponivel(){
-        return quantidadeDisponivel;
+        return this.quantidadeDisponivel;
     }
 
     public int getCodProduto(){
@@ -34,7 +31,7 @@ public class ItemEstoque{
         return id;
     }
 
-    public void setId(Long id){
+    public void setId(int id){
         this.id = id;
     }
 
@@ -46,12 +43,12 @@ public class ItemEstoque{
         this.codProduto = codProduto;
     }
 
-    // nao sei se seria necessario
-    public boolean diminuiProduto(){
-        if( quantidadeDisponivel >= 1){
-            quantidadeDisponivel -=1;
-            return true;
-        }
-        return false;
+    @Override
+    public String toString() {
+        return "ItemEstoque{" +
+                "id=" + id +
+                ", quantidadeDisponivel=" + quantidadeDisponivel +
+                ", codProduto=" + codProduto +
+                '}';
     }
 }
