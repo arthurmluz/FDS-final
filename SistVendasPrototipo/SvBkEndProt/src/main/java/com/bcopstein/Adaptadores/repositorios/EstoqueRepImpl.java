@@ -30,14 +30,9 @@ public class EstoqueRepImpl implements EstoqueRepository {
 
     @Override
     public boolean cadastra(ItemEstoque item) {
-        // TODO Auto-generated method stub
-        return false;
+        estoqueCRUD.save(item);
+        return true;
     }
 
 
-    @Override
-    public void removeTodos() {
-        // TODO Auto-generated method stub
-        
-    }
 }

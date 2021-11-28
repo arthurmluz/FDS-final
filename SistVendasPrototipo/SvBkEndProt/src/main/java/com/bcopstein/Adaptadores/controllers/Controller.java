@@ -3,6 +3,7 @@ package com.bcopstein.Adaptadores.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bcopstein.Adaptadores.dtos.ItemCarrinho;
 import com.bcopstein.Aplicacao.*;
 import com.bcopstein.Negocio.entidades.ItemVenda;
 import com.bcopstein.Negocio.entidades.Produto;
@@ -60,9 +61,9 @@ public class Controller {
 
   @PostMapping("/confirmacao")
   @CrossOrigin(origins = "*")
-  public boolean confirmaVenda(@RequestBody final ItemVenda[] carrinho)
+  public boolean confirmaVenda(@RequestBody final ItemCarrinho[] carrinho)
   {
-      return efetivarVenda.run();
+      return efetivarVenda.run(carrinho);
   }
 
   @GetMapping("/historico")

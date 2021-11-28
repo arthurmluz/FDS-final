@@ -1,5 +1,8 @@
 package com.bcopstein.Negocio.entidades;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +15,11 @@ public class Venda{
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long numero;
     private Date data;
+    private ArrayList<ItemVenda> produtos;
 
-    public Venda(long numero, Date data){
+    public Venda(Date data, ArrayList<ItemVenda> produtos){
         this.data = data;
-        this.numero = numero;
+        this.produtos = produtos;
     }
 
     protected Venda(){}

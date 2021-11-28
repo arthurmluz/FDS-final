@@ -27,5 +27,6 @@ public class ServicoDeVenda {
 
     public void cadastraVenda(Venda venda){
         vendaRep.cadastra(venda);
-    }   
+    }
+
 }

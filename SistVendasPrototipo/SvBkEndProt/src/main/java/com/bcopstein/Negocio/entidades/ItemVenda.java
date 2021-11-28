@@ -1,16 +1,27 @@
 package com.bcopstein.Negocio.entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class ItemVenda {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
     private int quantidade;
     private int codProduto;
     private int precoUnitVenda;
     private long imposto;
 
-    // ver com o pessoal se concordam
     public ItemVenda(int quantidade, int codProduto){
         this.quantidade = quantidade;
         this.codProduto = codProduto;
     }
+
+    protected ItemVenda(){}
 
     public int getCodProduto() {
         return codProduto;
