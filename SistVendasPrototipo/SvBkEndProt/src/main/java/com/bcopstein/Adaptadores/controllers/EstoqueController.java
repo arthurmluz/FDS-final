@@ -2,9 +2,9 @@ package com.bcopstein.Adaptadores.controllers;
 
 
 import com.bcopstein.Adaptadores.dtos.ItemCarrinho;
-import com.bcopstein.Aplicacao.UC_Estoque.UC_ConsultaEstoque;
-import com.bcopstein.Aplicacao.UC_Estoque.UC_InsereEstoque;
-import com.bcopstein.Aplicacao.UC_Estoque.UC_RemoveEstoque;
+import com.bcopstein.Aplicacao.UseCases.UC_Estoque.UC_ConsultaEstoque;
+import com.bcopstein.Aplicacao.UseCases.UC_Estoque.UC_InsereEstoque;
+import com.bcopstein.Aplicacao.UseCases.UC_Estoque.UC_RemoveEstoque;
 import com.bcopstein.Negocio.entidades.ItemEstoque;
 
 import org.springframework.beans.factory.annotation.Autowired;

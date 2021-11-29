@@ -12,15 +12,38 @@ public class Venda{
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long numero;
     private Date data;
+    private double imposto;
+    private double total;
+
     @OneToMany
     private List<ItemVenda> produtos;
 
-    public Venda(Date data, ArrayList<ItemVenda> produtos){
+    public Venda(Date data, ArrayList<ItemVenda> produtos, double total, double imposto){
         this.data = data;
         this.produtos = produtos;
     }
 
     protected Venda(){}
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getImposto() {
+        return imposto;
+    }
+
+    public void setImposto(double imposto) {
+        this.imposto = imposto;
+    }
+
+    public void setProdutos(List<ItemVenda> produtos) {
+        this.produtos = produtos;
+    }
 
     public long getNumero() {
         return this.numero;

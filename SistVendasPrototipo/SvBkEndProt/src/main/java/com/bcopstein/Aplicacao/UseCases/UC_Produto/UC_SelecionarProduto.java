@@ -1,12 +1,9 @@
-package com.bcopstein.Aplicacao.UC_Produto;
+package com.bcopstein.Aplicacao.UseCases.UC_Produto;
 
-import com.bcopstein.Adaptadores.controllers.LoggingController;
 import com.bcopstein.Negocio.entidades.ItemEstoque;
 import com.bcopstein.Negocio.servicos.ServicoDeEstoque;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

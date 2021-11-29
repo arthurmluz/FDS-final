@@ -1,4 +1,4 @@
-package com.bcopstein.Aplicacao.UC_Vendas;
+package com.bcopstein.Aplicacao.UseCases.UC_Vendas;
 
 import com.bcopstein.Adaptadores.controllers.LoggingController;
 import com.bcopstein.Adaptadores.dtos.ItemCarrinho;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Component
 public class UC_EfetivarVenda {
@@ -41,11 +40,16 @@ public class UC_EfetivarVenda {
 
     public boolean run(ItemCarrinho[] carrinho){
         // chamar o servico de vendas e de estoque
+        if( carrinho == null ) return false;
+
         ArrayList<ItemVenda> itemVendas = new ArrayList<>();
         int id = (servicoDeItemVenda.todos()).size();
 
+        double subtotal = 0;
         for(ItemCarrinho item: carrinho){
             Produto prod = servicoDeProduto.procura(item.getCodigo());
+
+            subtotal += prod.getPreco() * item.getQuantidade();
 
             ItemEstoque itemEstoque = servicoDeEstoque.procuraPorCodProduto(item.getCodigo());
             servicoDeEstoque.remove(itemEstoque, item.getQuantidade());
@@ -57,7 +61,7 @@ public class UC_EfetivarVenda {
         }
 
         Date data = new Date();
-        Venda venda = new Venda(data, itemVendas);
+        Venda venda = new Venda(data, itemVendas, 0, 0);
         return servicoDeVenda.cadastraVenda(venda);
     }
     

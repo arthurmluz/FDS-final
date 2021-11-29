@@ -11,7 +11,6 @@ public class ItemVenda {
     private int quantidade;
     private int codProduto;
     private double precoUnitVenda;
-    private long imposto;
 
     public ItemVenda(int id, int quantidade, int codProduto, double precoUnitVenda){
         this.id = id;
@@ -49,14 +48,6 @@ public class ItemVenda {
         return precoUnitVenda;
     }
 
-    public long getImposto(){
-        return imposto;
-    }
-
-    public void setImposto(long imposto){
-        this.imposto = imposto;
-    }
-
     public void setQuantidade(int quantidade){
         this.quantidade = quantidade;
     }
@@ -68,6 +59,6 @@ public class ItemVenda {
 
     @Override
     public String toString() {
-      return "Item Venda [quantidade=" + quantidade + ", preço unitário=" + precoUnitVenda + ", imposto=" + imposto+ "]";
+      return "Item Venda [quantidade=" + quantidade + ", preço unitário=" + precoUnitVenda;
     }
 }

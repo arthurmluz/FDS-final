@@ -1,5 +1,7 @@
 package com.bcopstein.Negocio.entidades;
 
+import com.bcopstein.Negocio.Categorias;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -9,17 +11,27 @@ public class Produto {
     private int codigo;
     private String descricao;
     private double preco;
+    private Categorias categoria;
 
-    public Produto(int codigo, String descricao, double preco) {
+    public Produto(int codigo, String descricao, Categorias categoria, double preco) {
       this.codigo = codigo;
       this.descricao = descricao;
       this.preco = preco;
+      this.categoria = categoria;
     }
 
     protected Produto(){}
 
     public int getCodigo() {
       return codigo;
+    }
+
+    public Categorias getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categorias categoria) {
+        this.categoria = categoria;
     }
 
     public String getDescricao() {

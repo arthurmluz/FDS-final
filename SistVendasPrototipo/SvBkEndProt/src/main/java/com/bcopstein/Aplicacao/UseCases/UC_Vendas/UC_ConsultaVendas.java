@@ -1,4 +1,4 @@
-package com.bcopstein.Aplicacao.UC_Vendas;
+package com.bcopstein.Aplicacao.UseCases.UC_Vendas;
 
 import com.bcopstein.Negocio.entidades.Venda;
 import com.bcopstein.Negocio.servicos.ServicoDeVenda;

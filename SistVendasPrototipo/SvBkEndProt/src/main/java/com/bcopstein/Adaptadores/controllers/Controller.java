@@ -3,11 +3,12 @@ package com.bcopstein.Adaptadores.controllers;
 import java.util.List;
 
 import com.bcopstein.Adaptadores.dtos.ItemCarrinho;
-import com.bcopstein.Aplicacao.UC_Produto.UC_CadastraProduto;
-import com.bcopstein.Aplicacao.UC_Produto.UC_ConsultaProdutos;
-import com.bcopstein.Aplicacao.UC_Produto.UC_SelecionarProduto;
-import com.bcopstein.Aplicacao.UC_Vendas.UC_ConsultaVendas;
-import com.bcopstein.Aplicacao.UC_Vendas.UC_EfetivarVenda;
+import com.bcopstein.Aplicacao.UseCases.UC_Produto.UC_CadastraProduto;
+import com.bcopstein.Aplicacao.UseCases.UC_Produto.UC_ConsultaProdutos;
+import com.bcopstein.Aplicacao.UseCases.UC_Produto.UC_SelecionarProduto;
+import com.bcopstein.Aplicacao.UseCases.UC_Vendas.UC_CalculaSubTotal;
+import com.bcopstein.Aplicacao.UseCases.UC_Vendas.UC_ConsultaVendas;
+import com.bcopstein.Aplicacao.UseCases.UC_Vendas.UC_EfetivarVenda;
 import com.bcopstein.Negocio.entidades.Produto;
 
 import com.bcopstein.Negocio.entidades.Venda;
@@ -28,17 +29,21 @@ public class Controller {
   private UC_ConsultaProdutos consultaProdutos;
   private UC_CadastraProduto cadastraProduto;
   private UC_ConsultaVendas consultaVendas;
+  private UC_CalculaSubTotal calculaSubTotal;
 
   @Autowired
   public Controller(UC_EfetivarVenda efetivarVenda,
                     UC_SelecionarProduto selecionarProduto,
                     UC_CadastraProduto cadastraProduto, UC_ConsultaProdutos consultaProdutos,
-                    UC_ConsultaVendas consultaVendas) {
+                    UC_ConsultaVendas consultaVendas,
+                    UC_CalculaSubTotal calculaSubTotal) {
+
     this.efetivarVenda = efetivarVenda;
     this.selecionarProduto = selecionarProduto;
     this.consultaProdutos = consultaProdutos;
     this.cadastraProduto = cadastraProduto;
     this.consultaVendas = consultaVendas;
+    this.calculaSubTotal = calculaSubTotal;
   }
 
   @GetMapping("/produtos")
@@ -76,34 +81,8 @@ public class Controller {
 
   @PostMapping("/subtotal")
   @CrossOrigin(origins = "*")
-  public Integer[] calculaSubTotal(@RequestBody final ItemCarrinho[] itens){
-      return new Integer[3];
+  public Double[] calculaSubTotal(@RequestBody final ItemCarrinho[] itens){
+      return calculaSubTotal.run(itens);
   }
 
 }
-
-
-  //@PostMapping("/subtotal")
-  //@CrossOrigin(origins = "*")
-  //public Integer[] calculaSubtotal(@RequestBody final ItemCarrinho[] itens) {
-  //  Integer subtotal = 0;
-  //  Integer imposto = 0;
-
-  //  for (final ItemCarrinho it : itens) {
-  //    // Procurar o produto pelo código
-  //    final Produto prod =
-  //        produtos.stream().filter(p -> p.getCodigo() == it.getCodigo()).findAny().orElse(null);
-
-  //    if (prod != null) {
-  //      subtotal += (int) (prod.getPreco() * it.getQuantidade());
-  //    } else {
-  //      throw new IllegalArgumentException("Codigo invalido");
-  //    }
-  //  }
-  //  imposto = (int) (subtotal * 0.1);
-  //  final Integer[] resp = new Integer[3];
-  //  resp[0] = subtotal;
-  //  resp[1] = imposto;
-  //  resp[2] = subtotal + imposto;
-  //  return resp;
-  //}}
