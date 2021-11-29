@@ -2,6 +2,7 @@ package com.bcopstein.Aplicacao.UseCases.UC_Vendas;
 
 import com.bcopstein.Adaptadores.controllers.LoggingController;
 import com.bcopstein.Adaptadores.dtos.ItemCarrinho;
+import com.bcopstein.Aplicacao.servicos.ServicoImposto;
 import com.bcopstein.Negocio.entidades.ItemEstoque;
 import com.bcopstein.Negocio.entidades.ItemVenda;
 import com.bcopstein.Negocio.entidades.Produto;
@@ -25,16 +26,19 @@ public class UC_EfetivarVenda {
     private ServicoDeEstoque servicoDeEstoque;
     private ServicoDeProduto servicoDeProduto;
     private ServicoDeItemVenda servicoDeItemVenda;
+    private ServicoImposto servicoImposto;
 
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
     @Autowired
     public UC_EfetivarVenda(ServicoDeVenda ServicoDeVenda, ServicoDeEstoque servicoDeEstoque,
-                            ServicoDeProduto servicoDeProduto, ServicoDeItemVenda servicoDeItemVenda) {
+                            ServicoDeProduto servicoDeProduto, ServicoDeItemVenda servicoDeItemVenda,
+                            ServicoImposto servicoImposto) {
         this.servicoDeVenda = ServicoDeVenda;
         this.servicoDeEstoque = servicoDeEstoque;
         this.servicoDeProduto = servicoDeProduto;
         this.servicoDeItemVenda = servicoDeItemVenda;
+        this.servicoImposto = servicoImposto;
     }
 
 
@@ -46,10 +50,12 @@ public class UC_EfetivarVenda {
         int id = (servicoDeItemVenda.todos()).size();
 
         double subtotal = 0;
+        double imposto = 0;
         for(ItemCarrinho item: carrinho){
             Produto prod = servicoDeProduto.procura(item.getCodigo());
 
             subtotal += prod.getPreco() * item.getQuantidade();
+            imposto += servicoImposto.calculaImpostos(subtotal,prod.getCategoria() );
 
             ItemEstoque itemEstoque = servicoDeEstoque.procuraPorCodProduto(item.getCodigo());
             servicoDeEstoque.remove(itemEstoque, item.getQuantidade());
@@ -60,8 +66,9 @@ public class UC_EfetivarVenda {
             itemVendas.add(itemVenda);
         }
 
+
         Date data = new Date();
-        Venda venda = new Venda(data, itemVendas, 0, 0);
+        Venda venda = new Venda(data, itemVendas, subtotal+imposto, imposto);
         return servicoDeVenda.cadastraVenda(venda);
     }
     

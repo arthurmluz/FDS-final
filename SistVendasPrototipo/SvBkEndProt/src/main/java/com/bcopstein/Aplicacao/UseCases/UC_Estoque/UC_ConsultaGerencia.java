@@ -13,6 +13,7 @@ import com.bcopstein.Negocio.servicos.ServicoDeVenda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,10 +27,12 @@ public class UC_ConsultaGerencia {
     @Autowired
     public UC_ConsultaGerencia(ServicoDeEstoque servicoDeEstoque,
                                ServicoDeItemVenda servicoDeItemVenda,
-                               ServicoDeProduto servicoDeProduto){
+                               ServicoDeProduto servicoDeProduto,
+                               ServicoDeVenda servicoDeVenda){
         this.servicoDeEstoque = servicoDeEstoque;
         this.servicoDeItemVenda = servicoDeItemVenda;
         this.servicoDeProduto = servicoDeProduto;
+        this.servicoDeVenda = servicoDeVenda;
     }
 
     public GerencialDTO run(){
@@ -43,7 +46,7 @@ public class UC_ConsultaGerencia {
         double valorTotalVendas = servicoDeVenda.todos().stream()
                 .mapToDouble(Venda::getTotal).sum();
 
-        StringBuilder relatorio = new StringBuilder();
+        List<String> relatorio = new ArrayList<String>();
         for(Categorias categoria : Categorias.values()){
             double valor = servicoDeItemVenda.todos()
                     .stream()
@@ -51,7 +54,7 @@ public class UC_ConsultaGerencia {
                             .getCategoria().equals(categoria))
                     .mapToDouble(x -> x.getPrecoUnitVenda() * x.getQuantidade())
                     .sum();
-            relatorio.append("Categoria: [").append(categoria).append("] Valor Total vendido: [").append(valor).append("]\n");
+            relatorio.add("Categoria: [" + categoria + "] Valor Total vendido: [" + valor + "]");
         }
 
         return new GerencialDTO(valorEstoque, valorTotalVendas, relatorio);

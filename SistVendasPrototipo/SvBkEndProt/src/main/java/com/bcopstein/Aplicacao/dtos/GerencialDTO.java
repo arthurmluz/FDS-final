@@ -1,11 +1,13 @@
 package com.bcopstein.Aplicacao.dtos;
 
+import java.util.List;
+
 public class GerencialDTO {
     private double valorEstoque;
     private double valorTotalVendas;
-    private StringBuilder relatorio;
+    private List<String> relatorio;
 
-   public GerencialDTO(double valorEstoque, double valorTotalVendas, StringBuilder relatorio) {
+   public GerencialDTO(double valorEstoque, double valorTotalVendas, List<String> relatorio) {
         this.valorEstoque = valorEstoque;
         this.valorTotalVendas = valorTotalVendas;
         this.relatorio = relatorio;
@@ -27,11 +29,11 @@ public class GerencialDTO {
         this.valorTotalVendas = valorTotalVendas;
     }
 
-    public StringBuilder getRelatorio() {
+    public List<String> getRelatorio() {
         return relatorio;
     }
 
-    public void setRelatorio(StringBuilder relatorio) {
+    public void setRelatorio(List<String> relatorio) {
         this.relatorio = relatorio;
     }
 }
