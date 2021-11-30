@@ -1,10 +1,9 @@
 package com.bcopstein.Adaptadores.configuradores;
 
-import com.bcopstein.Aplicacao.servicos.ICalculoImposto;
-import com.bcopstein.Aplicacao.servicos.ImpostoBrasil;
-import com.bcopstein.Aplicacao.servicos.ImpostoEspanha;
-import com.bcopstein.Aplicacao.servicos.ImpostoUSA;
-import com.bcopstein.Negocio.repositorios.VendaRepository;
+import com.bcopstein.Aplicacao.servicos.impostos.ICalculoImposto;
+import com.bcopstein.Aplicacao.servicos.impostos.ImpostoBrasil;
+import com.bcopstein.Aplicacao.servicos.impostos.ImpostoEspanha;
+import com.bcopstein.Aplicacao.servicos.impostos.ImpostoUSA;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -37,26 +36,3 @@ public class ConfiguradorImpostos {
         return new ImpostoEspanha();
     }
 }
-/*
- @Configuration
- public class ConfiguradorCalculoEstatistica {
-     private IEventoRepository eventoRep;
-
-     @Autowired
-     public ConfiguradorCalculoEstatistica(IEventoRepository eventoRep) {
-         this.eventoRep = eventoRep;
-     }
-
-     @Bean
-     @ConditionalOnProperty(name = "calculo.estatistica", havingValue = "original", matchIfMissing = true)
-     public ICalculoEstatistica opcaoRegraClassica() {
-         return new EstatisticaNormal(eventoRep);
-     }
-
-     @Bean
-     @ConditionalOnProperty(name = "calculo.estatistica", havingValue = "desconsidera")
-     public ICalculoEstatistica opcaoDesconsidera() {
-         return new EstatisticaDesconsidera(eventoRep);
-     }
- }
- */

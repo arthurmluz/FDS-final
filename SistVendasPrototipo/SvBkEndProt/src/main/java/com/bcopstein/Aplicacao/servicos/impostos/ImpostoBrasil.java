@@ -1,7 +1,6 @@
-package com.bcopstein.Aplicacao.servicos;
+package com.bcopstein.Aplicacao.servicos.impostos;
 
 import com.bcopstein.Negocio.Categorias;
-import com.bcopstein.Negocio.repositorios.ItemVendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ImpostoBrasil implements ICalculoImposto{

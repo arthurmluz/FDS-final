@@ -1,4 +1,4 @@
-package com.bcopstein.Aplicacao.servicos;
+package com.bcopstein.Aplicacao.servicos.impostos;
 
 import com.bcopstein.Negocio.Categorias;
 import org.springframework.beans.factory.annotation.Autowired;

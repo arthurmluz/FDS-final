@@ -3,7 +3,7 @@ package com.bcopstein.Aplicacao.UseCases.UC_Vendas;
 import com.bcopstein.Adaptadores.dtos.ItemCarrinho;
 import com.bcopstein.Negocio.entidades.Produto;
 import com.bcopstein.Negocio.servicos.ServicoDeProduto;
-import com.bcopstein.Aplicacao.servicos.ServicoImposto;
+import com.bcopstein.Aplicacao.servicos.impostos.ServicoImposto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

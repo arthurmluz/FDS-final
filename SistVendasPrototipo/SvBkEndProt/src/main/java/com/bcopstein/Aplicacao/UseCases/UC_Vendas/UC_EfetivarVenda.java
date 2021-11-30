@@ -2,7 +2,8 @@ package com.bcopstein.Aplicacao.UseCases.UC_Vendas;
 
 import com.bcopstein.Adaptadores.controllers.LoggingController;
 import com.bcopstein.Adaptadores.dtos.ItemCarrinho;
-import com.bcopstein.Aplicacao.servicos.ServicoImposto;
+import com.bcopstein.Aplicacao.servicos.impostos.ServicoImposto;
+import com.bcopstein.Aplicacao.servicos.restricoes.ServicoRestricao;
 import com.bcopstein.Negocio.entidades.ItemEstoque;
 import com.bcopstein.Negocio.entidades.ItemVenda;
 import com.bcopstein.Negocio.entidades.Produto;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -27,23 +29,31 @@ public class UC_EfetivarVenda {
     private ServicoDeProduto servicoDeProduto;
     private ServicoDeItemVenda servicoDeItemVenda;
     private ServicoImposto servicoImposto;
+    private ServicoRestricao servicoRestricao;
 
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
     @Autowired
     public UC_EfetivarVenda(ServicoDeVenda ServicoDeVenda, ServicoDeEstoque servicoDeEstoque,
                             ServicoDeProduto servicoDeProduto, ServicoDeItemVenda servicoDeItemVenda,
-                            ServicoImposto servicoImposto) {
+                            ServicoImposto servicoImposto,
+                            ServicoRestricao servicoRestricao) {
         this.servicoDeVenda = ServicoDeVenda;
         this.servicoDeEstoque = servicoDeEstoque;
         this.servicoDeProduto = servicoDeProduto;
         this.servicoDeItemVenda = servicoDeItemVenda;
         this.servicoImposto = servicoImposto;
+        this.servicoRestricao = servicoRestricao;
     }
 
 
     public boolean run(ItemCarrinho[] carrinho){
         // chamar o servico de vendas e de estoque
+        if( LocalTime.now().getHour() >= 20){
+            if( !(servicoRestricao.validaRestricao(carrinho)) )
+                return false;
+        }
+
         if( carrinho == null ) return false;
 
         ArrayList<ItemVenda> itemVendas = new ArrayList<>();
